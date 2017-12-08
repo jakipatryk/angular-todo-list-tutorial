@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { TaskService } from './services/task.service';
+
+import { AngularFireModule } from 'angularfire2';
+
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -12,9 +18,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
