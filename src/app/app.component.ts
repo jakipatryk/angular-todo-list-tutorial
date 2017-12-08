@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operator/map';
+
 import { TaskService } from './services/task.service';
+import { AuthService } from './services/auth.service';
 
 import { Task } from './models/task.model';
 
-import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
-
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -15,18 +16,25 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent implements OnInit {
 
+  currentUser: Observable<any>;
   dueDate: Date;
-  text: string;
   priority: string;
   tasks: Observable<Task[]>;
+  text: string;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService,
+              private authService: AuthService) {}
 
   ngOnInit() {
-    this.tasks = this.taskService.getTasks();
+    this.currentUser = this.authService.userObservable();
+    this.currentUser
+      .filter(res => res)
+      .subscribe(user => {
+        this.tasks = this.taskService.getTasks(user.uid);
+      });
   }
 
-  private addTask(): void {
+  private addTask() {
     const data = {
       'text': this.text,
       'priority': this.priority,
@@ -34,11 +42,19 @@ export class AppComponent implements OnInit {
       'dueDate': this.dueDate || new Date()
     };
 
-    this.taskService.addTask(data);
+    this.taskService.addTask(this.authService.user.uid, data);
   }
 
-  private deleteTask(taskId: string): void {
-    this.taskService.deleteTask(taskId);
+  private deleteTask(taskId: string) {
+    this.taskService.deleteTask(taskId, this.authService.user.uid);
+  }
+
+  private loginGoogle() {
+    this.authService.loginGoogle();
+  }
+
+  private logout() {
+    this.authService.logout();
   }
 
 }

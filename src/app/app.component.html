@@ -1,3 +1,12 @@
+<button *ngIf="(currentUser | async)?.uid" (click)="logout()">Logout</button>
+<button *ngIf="!(currentUser | async)?.uid" (click)="loginGoogle()">Login with Google!</button>
+
+<div>
+  <div *ngIf="(currentUser | async)?.uid; then authenticated else guest"></div>
+</div>
+
+<ng-template #authenticated>
+
 <ol *ngFor="let task of tasks | async">
   <li>
     <strong>{{ task.text }}</strong>
@@ -20,3 +29,9 @@
 <label for="dueDate">Due date: </label>
 <input type="date" [(ngModel)]="dueDate" name="dueDate">
 <button (click)="addTask()">Add task</button>
+
+</ng-template>
+
+<ng-template #guest>
+  <p>Login to see your tasks!</p>
+</ng-template>
