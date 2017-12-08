@@ -1,38 +1,46 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { Observable } from 'rxjs/Observable';
 
 import { Task } from '../models/task.model';
+import { User } from '../models/user.model';
 
 
 @Injectable()
 export class TaskService {
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore,
+              private afAuth: AngularFireAuth) {}
 
-  addTask(data: Task) {
-    return this.afs.collection(`tasks/`)
-            .add({ ...data })
-            .then(docRef => {
-              this.afs.doc(`tasks/${docRef.id}`).update({'id': docRef.id});
-            });
+  addTask(userId: string, data: Task) {
+    return this.afs.collection('users/' + userId + '/tasks')
+      .add({ ...data })
+      .then(docRef => {
+        this.afs.doc(`users/${userId}/tasks/${docRef.id}`)
+          .update({'id': docRef.id});
+    });
   }
 
-  deleteTask(taskId: string): Promise<void> {
-    return this.getTask(taskId).delete();
+  deleteTask(taskId: string, userId: string): Promise<void> {
+    return this.getTask(taskId, userId).delete();
   }
 
-  getTask(taskId: string): AngularFirestoreDocument<Task> {
-    return this.afs.doc<Task>(`tasks/${taskId}`);
+  getTask(taskId: string, userId: string): AngularFirestoreDocument<Task> {
+    return this.afs.doc<Task>(`users/${userId}/tasks/${taskId}`);
   }
 
-  getTasks(): Observable<any> {
-    return this.afs.collection(`tasks/`, (ref) => {
+  getTasks(userId: string): Observable<any> {
+    return this.afs.collection(`users/${userId}/tasks/`, (ref) => {
       return ref.orderBy('priority').orderBy('dueDate');
     })
       .valueChanges();
+  }
+
+  updateTask(taskId: string, userId: string, data): Promise<void> {
+    return this.getTask(taskId, userId).update(data);
   }
 
 }
