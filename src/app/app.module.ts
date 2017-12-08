@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TaskService } from './services/task.service';
+import { AuthService } from './services/auth.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -26,7 +27,10 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [TaskService],
+  providers: [
+    TaskService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
