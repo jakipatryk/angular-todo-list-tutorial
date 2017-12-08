@@ -13,7 +13,11 @@ export class TaskService {
   constructor(private afs: AngularFirestore) {}
 
   addTask(data: Task) {
-    return this.afs.collection(`tasks/`).add({ ...data });
+    return this.afs.collection(`tasks/`)
+            .add({ ...data })
+            .then(docRef => {
+              this.afs.doc(`tasks/${docRef.id}`).update({'id': docRef.id});
+            });
   }
 
   deleteTask(taskId: string): Promise<void> {
@@ -21,7 +25,7 @@ export class TaskService {
   }
 
   getTask(taskId: string): AngularFirestoreDocument<Task> {
-    return this.afs.doc<Task>(`tasks/{taskId}`);
+    return this.afs.doc<Task>(`tasks/${taskId}`);
   }
 
   getTasks(): Observable<any> {

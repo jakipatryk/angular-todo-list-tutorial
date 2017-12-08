@@ -1,5 +1,5 @@
 export interface Task {
-  id: string;
+  id?: string;
   text: string;
   priority: string;
   publishDate: Date;
