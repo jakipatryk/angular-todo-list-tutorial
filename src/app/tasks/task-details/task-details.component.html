@@ -1,0 +1,4 @@
+<strong>{{ task.text }}</strong>
+<p>priority: {{ task.priority }}</p>
+<p>due date: {{ task.dueDate | date: 'longDate' }}</p>
+<button (click)="deleteTask(task.id)">Done</button>

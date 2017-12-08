@@ -1,0 +1,6 @@
+<ol *ngFor="let task of tasks | async">
+    <li>
+      <app-task-details [task]="task" (taskIdEmitter)="deleteTask($event)"></app-task-details>
+    </li>
+</ol>
+<app-task-form (taskEmitter)="addTask($event)"></app-task-form>
