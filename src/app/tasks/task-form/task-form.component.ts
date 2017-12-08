@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+import { Task } from './../../models/task.model';
+
 
 @Component({
   selector: 'app-task-form',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskFormComponent implements OnInit {
 
+  @Output() taskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
+
+  text: string;
+  priority: string;
+  dueDate: Date;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addTask() {
+    this.taskEmitter.emit({
+      'text': this.text,
+      'priority': this.priority,
+      'dueDate': this.dueDate || new Date(),
+      'publishDate': new Date()
+    });
   }
 
 }

@@ -1,3 +1,11 @@
-<p>
-  task-form works!
-</p>
+<input type="text" [(ngModel)]="text" name="text" placeholder="Your task...">
+<br>
+<label for="priority">Priority: </label>
+<select [(ngModel)]="priority" name="priority">
+  <option ngValue="3">low</option>
+  <option ngValue="2">mid</option>
+  <option ngValue="1">high</option>
+</select>
+<label for="dueDate">Due date: </label>
+<input type="date" [(ngModel)]="dueDate" name="dueDate">
+<button (click)="addTask()">Add task</button>

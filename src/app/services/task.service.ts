@@ -6,7 +6,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
 import { Task } from '../models/task.model';
-import { User } from '../models/user.model';
 
 
 @Injectable()

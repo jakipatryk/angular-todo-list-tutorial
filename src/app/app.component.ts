@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operator/map';
-
-import { TaskService } from './services/task.service';
 import { AuthService } from './services/auth.service';
 
-import { Task } from './models/task.model';
+import { User } from './models/user.model';
+
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -16,37 +14,12 @@ import { Task } from './models/task.model';
 })
 export class AppComponent implements OnInit {
 
-  currentUser: Observable<any>;
-  dueDate: Date;
-  priority: string;
-  tasks: Observable<Task[]>;
-  text: string;
+  currentUser: Observable<User>;
 
-  constructor(private taskService: TaskService,
-              private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.currentUser = this.authService.userObservable();
-    this.currentUser
-      .filter(res => res)
-      .subscribe(user => {
-        this.tasks = this.taskService.getTasks(user.uid);
-      });
-  }
-
-  private addTask() {
-    const data = {
-      'text': this.text,
-      'priority': this.priority,
-      'publishDate': new Date(),
-      'dueDate': this.dueDate || new Date()
-    };
-
-    this.taskService.addTask(this.authService.user.uid, data);
-  }
-
-  private deleteTask(taskId: string) {
-    this.taskService.deleteTask(taskId, this.authService.user.uid);
   }
 
   private loginGoogle() {
