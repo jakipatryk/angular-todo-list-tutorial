@@ -15,11 +15,17 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { environment } from '../environments/environment';
+import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import { TaskFormComponent } from './tasks/task-form/task-form.component';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TasksListComponent,
+    TaskFormComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
