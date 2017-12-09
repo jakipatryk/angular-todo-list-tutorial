@@ -1,7 +1,11 @@
-<button *ngIf="(currentUser | async)?.uid" (click)="logout()">Logout</button>
-<button *ngIf="!(currentUser | async)?.uid" (click)="loginGoogle()">Login with Google!</button>
+<mat-toolbar>
+  <span class="fill-space"></span>
+  <span class="fill-space"></span>
+  <button *ngIf="(currentUser | async)?.uid" mat-raised-button (click)="logout()" color="accent">Logout</button>
+  <button *ngIf="!(currentUser | async)?.uid" mat-raised-button (click)="loginGoogle()" color="warn">Login with Google!</button>
+</mat-toolbar>
 
-<div>
+<div class="mat-typography container">
   <div *ngIf="(currentUser | async)?.uid; then authenticated else guest"></div>
 </div>
 
