@@ -7,13 +7,13 @@
     </mat-card-title>
 
     <mat-card-subtitle>
-      <p>{{task.priority}}</p>
+      <p>Priority: {{task.priority | priority}}</p>
     </mat-card-subtitle>
 
   </mat-card-header>
 
   <mat-card-content>
-    <p class="mat-title">{{task.text}}</p>
+    <p>{{task.text}}</p>
   </mat-card-content>
 
   <mat-card-actions>

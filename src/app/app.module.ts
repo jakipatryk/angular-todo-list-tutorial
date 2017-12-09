@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { environment } from '../environments/environment';
+import { PriorityPipe } from './tasks/pipes/priority.pipe';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { environment } from '../environments/environment';
     AppComponent,
     TasksListComponent,
     TaskFormComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    PriorityPipe
   ],
   imports: [
     BrowserModule,
