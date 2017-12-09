@@ -1,11 +1,26 @@
-<input type="text" [(ngModel)]="text" name="text" placeholder="Your task...">
+<mat-form-field class="text-input">
+  <input matInput [(ngModel)]="text" placeholder="Enter your task">
+</mat-form-field>
+
 <br>
-<label for="priority">Priority: </label>
-<select [(ngModel)]="priority" name="priority">
-  <option ngValue="3">low</option>
-  <option ngValue="2">mid</option>
-  <option ngValue="1">high</option>
-</select>
-<label for="dueDate">Due date: </label>
-<input type="date" [(ngModel)]="dueDate" name="dueDate">
-<button (click)="addTask()">Add task</button>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate" [min]="minDueDate" placeholder="Pick a due date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<br>
+
+<mat-form-field class="priority-select">
+  <mat-placeholder>Priority</mat-placeholder>
+  <mat-select [(ngModel)]="priority">
+    <mat-option value="3">low</mat-option>
+    <mat-option value="2">mid</mat-option>
+    <mat-option value="1">high</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+
+<button mat-fab color="accent" (click)="addTask()">+</button>

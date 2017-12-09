@@ -1,6 +1,7 @@
-<ol *ngFor="let task of tasks | async">
-    <li>
-      <app-task-details [task]="task" (taskIdEmitter)="deleteTask($event)"></app-task-details>
-    </li>
-</ol>
 <app-task-form (taskEmitter)="addTask($event)"></app-task-form>
+
+<div *ngIf="!(tasks | async)">
+    <mat-spinner></mat-spinner>
+</div>
+
+<app-task-details *ngFor="let task of tasks | async" [task]="task" (taskIdEmitter)="deleteTask($event)"></app-task-details>

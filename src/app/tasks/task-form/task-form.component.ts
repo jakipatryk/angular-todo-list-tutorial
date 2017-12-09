@@ -16,6 +16,8 @@ export class TaskFormComponent implements OnInit {
   priority: string;
   dueDate: Date;
 
+  minDueDate: Date = new Date();
+
   constructor() { }
 
   ngOnInit() {
