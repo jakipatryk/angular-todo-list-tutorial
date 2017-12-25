@@ -1,27 +1,18 @@
-# AngularTodoListTutorial
+# App for Community-Based Angular Course on [utopian.io](https://utopian.io/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
+## Already published parts:
+1. [Setting up our project](https://utopian.io/utopian-io/@jakipatryk/community-based-angular-course-from-scratch-setting-up-our-project)
+2. [At the beginning there was chaos](https://utopian.io/utopian-io/@jakipatryk/cbac-2-at-the-beginning-there-was-chaos)
 
-## Development server
+## How to participate in this community-based course?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Do you want to do pull request with contribution to my code or even with a new feature? If yes, just follow these steps:
 
-## Code scaffolding
+1. Fork my repo.
+2. Make your changes in a new branch.
+3. Push your branch to GitHub.
+4. In GitHub, send a pull request either to branch tutorial-part-x (if you found a bug or you don't like my approach) or to master (if you are adding a new feature).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Also, take advantage of the utopian.io, which will allow you to get a reward for your contribution to this project. You do not have to write theoretical issues to what you have created. That's what I'll take care of. If your pull request is accepted, I will resteem your post and 30% of the reward from the part of the course which you have contributed to will go to you (if more than one pull request is accepted, the reward will be divided equally for all).
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Of course, not only developers are welcome. In addition to the resteem, another 10% reward of each post will go to people who will publish other contributions to jakipatryk/angular-todo-list-tutorial project (e.g. a proven increase in course visability).
