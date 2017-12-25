@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Task } from './../../models/task.model';
 
 
@@ -12,23 +14,28 @@ export class TaskFormComponent implements OnInit {
 
   @Output() taskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
 
-  text: string;
-  priority: string;
-  dueDate: Date;
+  taskForm: FormGroup;
 
-  minDueDate: Date = new Date();
+  minDueDate = new Date();
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.createTaskForm();
   }
 
-  addTask() {
+  addTask(): void {
     this.taskEmitter.emit({
-      'text': this.text,
-      'priority': this.priority,
-      'dueDate': this.dueDate || new Date(),
+      ...this.taskForm.value,
       'publishDate': new Date()
+    });
+  }
+
+  private createTaskForm(): void {
+    this.taskForm = this.formBuilder.group({
+      text: ['', Validators.required],
+      dueDate: [new Date()],
+      priority: ['', Validators.required]
     });
   }
 

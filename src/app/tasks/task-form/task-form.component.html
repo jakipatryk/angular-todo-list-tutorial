@@ -1,11 +1,12 @@
+<form [formGroup]="taskForm" (ngSubmit)="addTask()">
 <mat-form-field class="text-input">
-  <input matInput [(ngModel)]="text" placeholder="Enter your task">
+  <input matInput formControlName="text" placeholder="Enter your task">
 </mat-form-field>
 
 <br>
 
 <mat-form-field>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="dueDate" [min]="minDueDate" placeholder="Pick a due date">
+  <input matInput [matDatepicker]="picker" [min]="minDueDate" formControlName="dueDate" placeholder="Pick a due date">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
@@ -14,7 +15,7 @@
 
 <mat-form-field class="priority-select">
   <mat-placeholder>Priority</mat-placeholder>
-  <mat-select [(ngModel)]="priority">
+  <mat-select formControlName="priority">
     <mat-option value="3">low</mat-option>
     <mat-option value="2">mid</mat-option>
     <mat-option value="1">high</mat-option>
@@ -23,4 +24,6 @@
 
 <br>
 
-<button mat-fab color="accent" (click)="addTask()">+</button>
+<button mat-fab [disabled]="taskForm.invalid" type="submit" color="accent">+</button>
+
+</form>
