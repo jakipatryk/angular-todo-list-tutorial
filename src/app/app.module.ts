@@ -10,6 +10,8 @@ import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 import { TaskFormComponent } from './tasks/task-form/task-form.component';
 import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 
+import { PriorityPipe } from './tasks/pipes/priority.pipe';
+
 import { TaskService } from './services/task.service';
 import { AuthService } from './services/auth.service';
 
@@ -27,7 +29,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { environment } from '../environments/environment';
-import { PriorityPipe } from './tasks/pipes/priority.pipe';
 
 
 @NgModule({

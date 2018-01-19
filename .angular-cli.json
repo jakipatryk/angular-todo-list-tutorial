@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "manifest.json",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -18,6 +19,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
+      "serviceWorker": true,
       "styles": [
         "styles.scss"
       ],
@@ -55,6 +57,7 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+    }
   }
 }

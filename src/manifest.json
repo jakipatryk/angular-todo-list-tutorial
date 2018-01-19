@@ -1,0 +1,21 @@
+{
+    "short_name": "CBAC",
+    "name": "App for Community-Based Angular Course",
+    "start_url": "https://angular-todo-list-tutorial.firebaseapp.com/",
+    "theme_color": "#f48c5b",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/assets/icons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    },
+    {
+        "src": "/assets/icons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }
+    ]
+}
