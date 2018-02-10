@@ -2,7 +2,9 @@
 
 ## Curriculum so far:
 [Setting up our project](https://utopian.io/utopian-io/@jakipatryk/community-based-angular-course-from-scratch-setting-up-our-project)
+
 [At the beginning there was chaos](https://utopian.io/utopian-io/@jakipatryk/cbac-2-at-the-beginning-there-was-chaos)
+
 [Dependency Injection](https://utopian.io/utopian-io/@jakipatryk/cbac-3a-dependency-injection)
 
 ## How to participate in this community-based course?
